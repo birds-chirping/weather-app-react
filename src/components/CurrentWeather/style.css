@@ -1,0 +1,83 @@
+.current-weather-card {
+  display: flex;
+  flex-direction: column;
+  color: var(--the-gray);
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 1px 1px 5px rgba(33, 32, 32, 0.5);
+  overflow: hidden;
+}
+
+.current-weather-card .title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--the-gray);
+  padding: 1rem;
+}
+
+.current-weather-card .weather-info {
+  display: flex;
+  padding: 2rem 1rem;
+}
+
+.current-weather-card .weather-info .left {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(rgb(187, 199, 255) 20%, white 70%);
+}
+
+.left .icon {
+  margin: 0 1rem 0 5rem;
+}
+
+.left .temperature {
+  font-size: 4.5rem;
+  line-height: 4.5rem;
+  font-weight: 700;
+}
+
+.left .description {
+  font-size: 1.2rem;
+}
+
+.current-weather-card .weather-info .right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.right > * {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.right .extra-info :first-child .value {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+/* --------- forecast button --------- */
+
+.forecast-btn {
+  align-self: center;
+  border: none;
+  outline: none;
+  font-family: "Ubuntu", Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: white;
+  background-color: var(--accent-color);
+  border-radius: 5px;
+  margin: 1rem;
+  padding: 0.5rem 7rem;
+}
+
+.forecast-btn:active,
+.forecast-btn:hover {
+  outline: none;
+  background-color: var(--accent-color-light);
+}

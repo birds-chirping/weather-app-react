@@ -1,0 +1,66 @@
+.forecast-container {
+  background-color: white;
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 1px 1px 5px rgba(33, 32, 32, 0.3);
+}
+
+.day-forecast-title {
+  color: var(--accent-color);
+  font-weight: 500;
+  font-size: 1.3rem;
+  border-bottom: 2px solid var(--accent-color);
+  padding: 1rem 0 0;
+}
+
+.day-forecast-content {
+  width: 48rem;
+  margin: auto;
+  display: flex;
+  justify-content: flex-end;
+  padding: 1rem 0;
+}
+
+.day-forecast-container:last-child .day-forecast-content {
+  justify-content: flex-start;
+}
+
+/* -------- hour --------- */
+
+.hour-forecast {
+  width: 5.5rem;
+  height: 12rem;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  background: linear-gradient(
+    rgba(42, 114, 230, 0.75) 20%,
+    rgba(42, 114, 230, 0.6) 38%,
+    rgba(42, 89, 230, 0.2),
+    transparent
+  );
+  border-radius: 5px;
+  margin: 0.25rem;
+  padding: 1rem 0.25rem;
+}
+
+.hour-forecast > * {
+  text-align: center;
+}
+
+.hour-forecast .temperature {
+  font-weight: 500;
+  font-size: 2rem;
+}
+
+.hour-forecast .description {
+  flex: 1;
+  color: var(--the-dark-gray);
+  font-style: italic;
+}
+
+.hour-forecast .time {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--the-dark-gray);
+}
