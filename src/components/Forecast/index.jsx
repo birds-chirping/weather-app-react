@@ -8,8 +8,7 @@ const Forecast = ({ location }) => {
   useEffect(() => {
     const fetchData = async () => {
       const apidata = await WeatherAPI.getForecast(location);
-      const newData = getForecastForEachDay(apidata);
-      setData(newData);
+      setData(getForecastForEachDay(apidata));
     };
     fetchData();
   }, []);
@@ -17,27 +16,9 @@ const Forecast = ({ location }) => {
   return data ? (
     data.cod === "200" ? (
       <div className="forecast-container">
-        {data.days.map((day) => {
-          return (
-            <div key={`${day[0].dayName}`} className="day-forecast-container">
-              <div className="day-forecast-title">{day[0].dayName}</div>
-              <div className="day-forecast-content">
-                {day.map((hour) => {
-                  return (
-                    <div key={`${hour.dayName}+${hour.time}`} className="hour-forecast">
-                      <div className="temperature">{hour.temperature}°</div>
-                      <div className="icon-wrapper">
-                        <img src={hour.icon} />
-                      </div>
-                      <div className="description">{hour.description}</div>
-                      <div className="time">{hour.time}</div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          );
-        })}
+        {data.days.map((day) => (
+          <DayForecast key={`${day[0].dayName}`} day={day} />
+        ))}
       </div>
     ) : (
       <>{data.message}</>
@@ -47,10 +28,37 @@ const Forecast = ({ location }) => {
   );
 };
 
+const DayForecast = ({ day }) => {
+  return (
+    <div className="day-forecast-container">
+      <div className="day-forecast-title">{day[0].dayName}</div>
+      <div className="day-forecast-content">
+        {day.map((hour) => (
+          <HourCard key={`${hour.dayName}+${hour.time}`} hour={hour} />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+const HourCard = ({ hour }) => {
+  return (
+    <div className="hour-forecast">
+      <div className="temperature">{hour.temperature}°</div>
+      <div className="icon-wrapper">
+        <img src={hour.icon} />
+      </div>
+      <div className="description">{hour.description}</div>
+      <div className="time">{hour.time}</div>
+    </div>
+  );
+};
+
 function getForecastForEachDay(data) {
   if (data.cod != "200") return data;
-  let days = [];
+
   let lastDayName = null;
+  let days = [];
   let hours = [];
 
   data.list.forEach((weatherByTime) => {

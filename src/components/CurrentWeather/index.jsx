@@ -74,9 +74,11 @@ const CurrentWeather = ({ location }) => {
             </div>
           </div>
         </div>
+
         <button onClick={handleClick} className="forecast-btn">
           5-Day Weather Forecast
         </button>
+
         {showForecast && <Forecast location={data.name} />}
       </>
     ) : (
